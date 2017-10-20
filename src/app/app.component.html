@@ -1,20 +1,123 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="layout_layer">
+
+  <main class="layout-main">
+
+    <div class="grid-row has-top_border is-gray">
+
+
+      <div class="grid-row-inner has-big_padding" id="searchDiv">
+
+
+        <div id="search" [class]="getSearchIcon()">
+          <input id="searchInput" placeholder="Seek a question" (keydown)='resetSearchDone($event)' [(ngModel)]='userQuestion' />
+          <button id="button" (click)='searchQuestion()' alt="search">
+            <i class="fa fa-search"></i>
+          </button>
+          <div class="spinner">
+            <i class="fa fa-spinner"></i>
+          </div>
+        </div>
+        <div id="snackbar" [class]="snackClass">{{snackMessage}}</div>
+        <div class="note">Click the button or hit enter.</div>
+      </div>
+    </div>
+
+    <div class="grid-row has-top_border is-gray" id="questions" *ngIf='questions && questions.length'>
+      <div class="grid-row-inner has-big_padding">
+        <div class="iquestions_list">
+
+          <div [class]='getQuestionClass(question)' *ngFor='let question of questions;let i = index'>
+            <div class="iquestion-inner_border">
+              <div class="iquestion-inner" (click)='switchAnswer(question,i)'>
+                <div class="iquestion-icon"></div>
+                <div class="iquestion-info">
+                  <div class="iquestion-info_body">
+                    <p>{{question.question}}</p>
+                  </div>
+                </div>
+                <div class="iquestion-footer">
+                  <a class="iquestion-answer_link" rel="noopener noreferrer">
+                    <span class="iquestion-answer_icon"></span>
+                    <span>{{getLabelAnwerLink(question)}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="questions-spinner">
+              <i class="fa fa-spinner fa-spin fa-2x" *ngIf='questionProcessing[i]'></i>
+            </div>
+            <div [class]='getAnswerClass(question)'>
+              <div class="iquestion_answer-wrapper">
+                <div class="iquestion_answer-inner">
+                  <div class="iquestion_answer-icon"></div>
+                  <div class="iquestion_answer-body content_body is-small">
+                    <p *ngIf="question.answer && question.answer.link">
+                      <a href="{{question.answer.link}}" target="_blank">See this link</a>
+                    </p>
+                    <!-- Not works when add Polymer -->
+                    <!-- p *ngIf="question.answer" [innerHTML]='question.answer.content'></p-->
+                    <p #divContent></p>
+                    <p *ngIf="question.answer">{{question.answer.date}}</p>
+                  </div>
+                </div>
+                <div class="iquestion_answer-footer">
+                  <a class="iquestion_answer-add_comment" (click)='switchComment(question)'>{{getLabelCommnetLink(question)}}</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <div class="iquestion_comment_form-wrapper" *ngIf="question.isCommentActive">
+
+              <form is='iron-form' (ngSubmit)="sendComment(question)" class="simple_form iquestion_comment_form" id="interview_question_comment"
+                accept-charset="UTF-8" method="post" id="commentForm">
+
+                <fieldset class="form-fieldset iquestion_comment_form-fieldset" *ngIf="!question.isCommentSent">
+                  <div class="ui-textbox form-field js-field_wrapper string required interview_question_comment_name iquestion_comment_form-field">
+                    <input class="string required input" x-autocompletetype="name" required="required" aria-required="true" placeholder="Name"
+                      type="text" name="name" id="name" [(ngModel)]='commentFormName'>
+                  </div>
+
+                  <div class="ui-textbox form-field js-field_wrapper email required interview_question_comment_email iquestion_comment_form-field">
+                    <input class="string email required input" x-autocompletetype="email" required="required" aria-required="true" placeholder="Email"
+                      type="email" name="email" id="email" [(ngModel)]='commentFormEmail'>
+                  </div>
+
+                  <div class="ui-textarea form-field js-field_wrapper text required interview_question_comment_body field_with_hint iquestion_comment_form-field"
+                    data-view="ui#autoexpand">
+                    <textarea class="text required input textarea" required="required" aria-required="true" placeholder="Enter your comment here"
+                      name="comments" id="comments" [(ngModel)]='commentFormComments'></textarea>
+                    <span class="hint">Fields marked with an asterisk (
+                      <span class="iquestion_comment_form-hint_star">*</span>) are required</span>
+                  </div>
+                  <div class="robot_protection_input form-field js-field_wrapper robot_protection optional interview_question_comment_comment">
+                    <textarea maxlength="0" name="interview_question_comment[comment]" id="interview_question_comment_comment"></textarea>
+                  </div>
+
+                  <div class="iquestion_comment_form-footer">
+                    <div class="iquestion_comment_form-footer_right">
+                      <div class="form-actions is-right_aligned no_flexbox-form_submit">
+                        <button class="button is-green_candy is-medium has-arrow has-inline_arrow no_flexbox-form_submit_button iquestion_comment_form-submit_button"
+                          type="submit">Submit a Comment</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </fieldset>
+                <div class="iquestion_comment_form-thank" *ngIf="question.isCommentSent">
+                  <div class="iquestion_comment_form-thank_title">Comment submitted succesfully. Thank you.</div>
+                  <div class="iquestion_comment_form-thank_text">We are going to review the comment and get back to you as soon as possible.</div>
+                </div>
+                <div class="iquestion_comment_form-thank" *ngIf="question.isCommentSentFailed">
+                  <div class="iquestion_comment_form-thank_title">
+                    <font color='red'>Not able to sent you comments try again.</font>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

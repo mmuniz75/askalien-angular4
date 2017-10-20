@@ -1,14 +1,130 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>AskalienAngular4</title>
-  <base href="/">
+﻿<!DOCTYPE html>
+<html>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head lang="en">
+    <title>Ask Alien 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" />
+    
+    <!-- Polyfill(s) for older browsers -->
+    <script src="/assets/js/shim.min.js"></script>
+    
+    <script src="/assets/js/Reflect.js"></script>
+    <script src="/assets/js/system.src.js"></script>
+
+    <link rel="stylesheet" media="screen" href="/assets/css/blog_styles.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/public_styles.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/template/style.css" title="style" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css" title="style" />
+
+    <script src="/assets/js/jquery_and_modernizr.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
 </head>
-<body>
-  <app-root></app-root>
-</body>
+
+<body class="layout" style="background: url(/assets/images/Andromeda_Galaxy.jpg) repeat">
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <img src='/assets/images/mythi.png' height="128" width="128" align='left' style="margin-Top:30px">
+                <div id="logo_text">
+                    <!-- class="logo_colour", allows you to change the colour of the text -->
+                    <h1>Ask
+                        <span class="logo_colour">Alien 2</span>
+                    </h1>
+                    <h2>This is a database of questions done by people from the Internet and answered by an alien from Andromeda
+                        Galaxy</h2>
+                </div>
+            </div>
+            <div>
+                <nav class="btn-bar nav-light">
+                    <a href="#" class="btn btn-glass btn-primary" data-toggle="modal" data-target="#syntaxDialog" >
+                        <i class="fa fa-fw fa-lg fa-binoculars"></i> Improve your Search
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=edu.muniz.universeguide.mobile" target="_blank" class="btn btn-glass btn-primary">
+                        <i class="fa fa-fw fa-lg fa-android"></i> Avaliable to Android
+                    </a>
+
+                    <a href="http://mythidb-askalien.a3c1.starter-us-west-1.openshiftapps.com/ask/main_old.jsf" target="_blank" class="btn btn-glass btn-primary">
+                        <i class="fa fa-fw fa-lg fa-step-backward"></i> Old Version
+                    </a>
+                    <a href="#" class="btn btn-glass btn-primary" onclick="document.getElementById('payPalForm').submit()">
+                        <i class="fa fa-fw fa-lg fa-money"></i> Donate
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <app-root></app-root>
+
+        <div id="content_footer"></div>
+        <div id="footer">
+            &copy; Muniz | 2017 | version 12
+        </div>
+    </div>
+
+
+
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="payPalForm" style="" class="">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+  </form>
+
+  <div class="modal fade" id="syntaxDialog" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Search Syntax</h4>
+            </div>
+            <div class="modal-body">
+                    More words better results sort.
+                    <br>
+                    Examples :
+                    <pre class="code">physical characteristics humanoid</pre>
+                    <pre class="code">Egyptian pyramids power</pre>
+                    <br>
+                    You can use operators OR AND NOT (capital letters) to improve your search. 
+                    <br>
+                    Examples :
+                    <pre class="code">alien AND starship</pre>
+                    <pre class="code">krulian OR pleiadian</pre>
+                    <pre class="code">alien AND NOT pleiadian</pre>
+                    <br>
+                    You can use double quotes to a exactly match. 
+                    <br>
+                    Example, to search just questions with night and walkers together with a space in the middle :
+                    <pre class="code">"night walkers"</pre>
+                    <br>
+                    You can use ~ symbol to aproximade search. 
+                    <br>
+                    Example if you type wrong the ~ will try get some similar results as Google does :
+                    <pre class="code">pliadian~</pre>
+                    <br>
+                    You can use * symbol to partial search. 
+                    <br>
+                    Example :
+                    <pre class="code">pleiadi*</pre>
+                    <br>
+                    You can use parenteces to a complex search. 
+                    <br>
+                    Example:
+                    <pre class="code">(krulian AND pleiadian) OR (zigs AND arcturians)</pre>
+                    <br>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </body>
 </html>
