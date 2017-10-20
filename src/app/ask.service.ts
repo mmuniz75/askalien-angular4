@@ -9,11 +9,12 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import { environment } from '../environments/environment';
+
 @Injectable()
 export class AskService {
 
-  //private static SERVER = "localhost:8080/mythidb-3.2";
-  private static SERVER = "mythi-wildfly.us-east-1.elasticbeanstalk.com";
+  private static SERVER = environment.SERVER_URL;
 
   private _askUrl = 'http://' + AskService.SERVER + '/rest/question/ask?question=';
   private _anwerUrl = 'http://' + AskService.SERVER + '/rest/answer/detail?id=';
