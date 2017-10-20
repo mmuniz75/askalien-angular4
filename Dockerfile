@@ -4,11 +4,19 @@
 #sudo docker run -d -p 80:8080 --name mythi-search-local askalien:mythi-search-local
 
 
-FROM node as node_files
+FROM node as builder
 
 COPY package.json package.json
 
-RUN npm install && ng build
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+
+WORKDIR /ng-app
+
+COPY . .
+
+RUN ng build --prod --build-optimizer
 
 FROM nginx:1.13.5-alpine
 
@@ -17,7 +25,7 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY node_files:/dist /usr/share/nginx/html
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
 
 ARG ASKALIEN_SERVER
 
