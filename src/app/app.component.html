@@ -70,7 +70,7 @@
             <div class="iquestion_comment_form-wrapper" *ngIf="question.isCommentActive">
 
               <form is='iron-form' (ngSubmit)="sendComment(question)" class="simple_form iquestion_comment_form" id="interview_question_comment"
-                accept-charset="UTF-8" method="post" id="commentForm">
+                accept-charset="UTF-8" method="post" id="commentForm" ngNativeValidate>
 
                 <fieldset class="form-fieldset iquestion_comment_form-fieldset" *ngIf="!question.isCommentSent">
                   <div class="ui-textbox form-field js-field_wrapper string required interview_question_comment_name iquestion_comment_form-field">
