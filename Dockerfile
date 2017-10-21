@@ -18,7 +18,7 @@ COPY . .
 
 ARG ASKALIEN_SERVER
 
-RUN sed -i -e 's|${ASKALIEN_SERVER}|'${ASKALIEN_SERVER}'|g' /ng-app/src/environments/environment.prod.ts
+RUN sed -i -e 's|<ASKALIEN_SERVER>|'${ASKALIEN_SERVER}'|g' /ng-app/src/environments/environment.prod.ts
 
 RUN $(npm bin)/ng build --prod --build-optimizer
 
