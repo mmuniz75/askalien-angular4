@@ -1,8 +1,8 @@
 
-#sudo docker build --build-arg ASKALIEN_SERVER=mythidb-askalien.a3c1.starter-us-west-1.openshiftapps.com -t askalien:mythi-search-remoto .
+#sudo docker build --build-arg ASKALIEN_SERVER=mythidb-askalien.a3c1.starter-us-west-1.openshiftapps.com -t mmuniz/askalien:mythi-search .
+#sudo docker build --build-arg ASKALIEN_SERVER=mythi-wildfly.us-east-1.elasticbeanstalk.com -t askalien:mythi-search-aws .
 #sudo docker build --build-arg ASKALIEN_SERVER=localhost:8080 -t askalien:mythi-search-local .
 #sudo docker run -d -p 80:8080 --name mythi-search-local askalien:mythi-search-local
-
 
 FROM node as builder
 
@@ -16,7 +16,11 @@ WORKDIR /ng-app
 
 COPY . .
 
-RUN ng build --prod --build-optimizer
+ARG ASKALIEN_SERVER
+
+RUN sed -i -e 's|<ASKALIEN_SERVER>|'${ASKALIEN_SERVER}'|g' /ng-app/src/environments/environment.prod.ts
+
+RUN $(npm bin)/ng build --prod --build-optimizer
 
 FROM nginx:1.13.5-alpine
 
@@ -27,10 +31,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=builder /ng-app/dist /usr/share/nginx/html
 
-ARG ASKALIEN_SERVER
-
-RUN rm -rf /usr/share/nginx/html/nginx && \
-    sed -i -e 's|${ASKALIEN_SERVER}|'${ASKALIEN_SERVER}'|g' /usr/share/nginx/html/app/ask.service.js
+RUN rm -rf /usr/share/nginx/html/nginx
     
 EXPOSE 8080
 
