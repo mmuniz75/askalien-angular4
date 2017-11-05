@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  SERVER_URL : "localhost:8080/mythidb-3.2"
+  SERVER_URL : "localhost:8080/"
 };

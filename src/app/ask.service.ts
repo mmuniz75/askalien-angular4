@@ -16,40 +16,40 @@ export class AskService {
 
   private static SERVER = environment.SERVER_URL;
 
-  private _askUrl = 'http://' + AskService.SERVER + '/rest/question/ask?question=';
-  private _anwerUrl = 'http://' + AskService.SERVER + '/rest/answer/detail?id=';
-  private _feedBackUrl = 'http://' + AskService.SERVER + '/rest/question/feedback';
+  private _askUrl = 'http://' + AskService.SERVER + '/ask?question=';
+  private _anwerUrl = 'http://' + AskService.SERVER + '/answer/';
+  private _feedBackUrl = 'http://' + AskService.SERVER + '/feedback';
     
   constructor(private _http: Http) { }
 
   ask(keyword:String) : Observable<IQuestion[]>{
-    
+      let headers = new Headers({ 'Authorization': 'Basic ' +  btoa('admin:456') });   
+      let options = new RequestOptions({ headers: headers ,method: "get"});
+
      return this._http.get(this._askUrl + keyword)
-        .map((response: Response) => <IQuestion[]> response.json().questions)
+        .map((response: Response) => <IQuestion[]> response.json())
         //.do(data => console.log('All: ' +  JSON.stringify(data)))
         .catch(this.handleError);
   }
 
 
   getAnswer(id: Number,search:String) : Observable<IAnswer> {
-        return this._http.get(this._anwerUrl + id + "&search=" + search)
-        .map((response: Response) => <IAnswer> response.json().answer)
+        return this._http.get(this._anwerUrl + "/" + id + "?question=" + search)
+        .map((response: Response) => <IAnswer> response.json())
         //.do(data => console.log('All: ' +  JSON.stringify(data)))
         .catch(this.handleError);
   }
 
   sendFeedBack(questionId:Number,name:String,email:String,comments:String):Observable<any>{
-      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+      let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers ,method: "post"});
+      let data = new Comment();
+      data.id = questionId;
+      data.creator = name.toString();
+      data.email = email.toString();
+      data.feedback = comments.toString();          
       
-      let data = new URLSearchParams();
-      data.set('questionId',questionId.toString());
-      data.set('name',name.toString());
-      data.set('email',email.toString());
-      data.set('comments',comments.toString());
-                
-
-      return this._http.post(this._feedBackUrl, data, options)
+      return this._http.post(this._feedBackUrl, JSON.stringify(data), options)
                     //.map((response: Response) => response.json())
                     .catch(this.handleError);
 
@@ -59,5 +59,12 @@ export class AskService {
     console.error(error);
     return Observable.throw(error.message || 'Server error');
  }
-
 }  
+
+export class Comment {
+   id: Number;
+   email : String;
+   creator : String;
+   feedback : String;
+}
+  
