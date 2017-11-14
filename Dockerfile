@@ -1,8 +1,7 @@
 
-#sudo docker build --build-arg ASKALIEN_SERVER=mythidb-askalien.a3c1.starter-us-west-1.openshiftapps.com -t mmuniz/askalien:mythi-search .
-#sudo docker build --build-arg ASKALIEN_SERVER=mythi-wildfly.us-east-1.elasticbeanstalk.com -t askalien:mythi-search-aws .
-#sudo docker build --build-arg ASKALIEN_SERVER=localhost:8080 -t askalien:mythi-search-local .
-#sudo docker run -d -p 80:8080 --name mythi-search-local askalien:mythi-search-local
+#sudo docker build --build-arg ASKALIEN_SERVER=askalien-server.us-east-1.elasticbeanstalk.com -t mmuniz/askalien:client .
+#sudo docker build --build-arg ASKALIEN_SERVER=localhost:8080 -t askalien:client-local .
+#sudo docker run -d -p 80:8080 --name askalien-client-local askalien:client-local
 
 FROM node as builder
 
