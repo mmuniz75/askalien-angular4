@@ -56,8 +56,8 @@
                       <a href="{{question.answer.link}}" target="_blank">See this link</a>
                     </p>
                     <!-- Not works when add Polymer -->
-                    <!-- p *ngIf="question.answer" [innerHTML]='question.answer.content'></p-->
-                    <p #divContent></p>
+                    <p *ngIf="question.answer" [innerHTML]='question.answer.content'></p>
+                    <!-- <p #divContent></p-->
                     <p *ngIf="question.answer">{{question.answer.date}}</p>
                   </div>
                 </div>
