@@ -2,6 +2,8 @@ import { Component,ViewChildren,ElementRef,QueryList } from '@angular/core';
 import { AskService } from './ask.service';
 import { IQuestion } from './question';
 
+import { environment } from '../environments/environment';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -46,6 +48,11 @@ export class AppComponent {
     @ViewChildren('divContent') divContent:QueryList<ElementRef>;
     
     constructor(private _askService: AskService) {
+    }
+
+    ngOnInit() {
+        if(environment.production)
+          this._askService.configServer().subscribe()
     }
 
     searchQuestion(): void {
