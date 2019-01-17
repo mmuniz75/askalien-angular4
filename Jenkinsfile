@@ -14,6 +14,6 @@ node {
 	  sh 'ng build --prod --build-optimizer'
     }    
    stage('Sync with AWS') {
-	 sh "export PATH=/var/jenkins_home/.local/bin:$PATH && aws s3 sync dist s3://aws-website-askalien-8enqo/ --delete"
+	 sh "export PATH=/var/jenkins_home/.local/bin:$PATH && aws s3 sync dist s3://askalien.men/ --delete"
     }    
 }
