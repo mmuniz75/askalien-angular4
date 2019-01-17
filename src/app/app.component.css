@@ -1,3 +1,12 @@
+#searchDiv {
+    background: white;    
+    border: none;
+    top: 0;
+    position: absolute;
+    width: 70%;
+    padding: 16px;
+}
+
 .note {
     font-size: 0.775em;
     font-weight: bold;

@@ -2,12 +2,8 @@
 <div class="layout_layer">
 
   <main class="layout-main">
-
-    <div class="grid-row has-top_border is-gray">
-
-
-      <div class="grid-row-inner has-big_padding" id="searchDiv">
-
+    <div >
+      <div  id="searchDiv">
 
         <div id="search" [class]="getSearchIcon()">
           <input id="searchInput" placeholder="Seek a question" (keydown)='resetSearchDone($event)' [(ngModel)]='userQuestion' />
@@ -23,8 +19,8 @@
       </div>
     </div>
 
-    <div class="grid-row has-top_border is-gray" id="questions" *ngIf='questions && questions.length'>
-      <div class="grid-row-inner has-big_padding">
+    <div id="questions" *ngIf='questions && questions.length'>
+      <div >
         <div class="iquestions_list">
 
           <div [class]='getQuestionClass(question)' *ngFor='let question of questions;let i = index'>
