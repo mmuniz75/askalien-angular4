@@ -1,7 +1,7 @@
 .layout_layer {
     position: absolute;
     z-index : 2;
-    margin-top : 240px;
+    margin-top : 200px;
 }
 
 .layout-main {
@@ -32,9 +32,10 @@
     text-transform: uppercase;
     color: #6C6A6A;
     text-align: center;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+    height: 100%;;
+    width: 100%;
+    padding: 0;
+    position: absolute;
 }
 
 
@@ -210,7 +211,7 @@
 
 @media screen and (max-width: 698px) {
     .layout_layer {
-        margin-top : 170px;
+        margin-top : 1px;
         font-size: 1rem;
         align-content: center;
     } 
@@ -233,3 +234,9 @@
        margin-left: 16px;
     }
 }   
+
+@media screen and (max-height: 900px) {
+    .layout_layer {
+        margin-top : 1px;
+    }    
+}  

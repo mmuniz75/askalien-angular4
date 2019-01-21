@@ -107,7 +107,7 @@ ol li
 */
 #header
 { background: #025587;
-  height: 240px;
+  height: 210px;
   margin: 0;
   width: 100%;
   position: fixed; 
@@ -123,12 +123,12 @@ ol li
 #logo
 { width: 100vw;
   position: relative;
-  height: 168px;
+  height: 148px;
   background: #025587 url(logo.png) no-repeat;}
 
 #logo #logo_text 
 { position: absolute; 
-  top: 20px;
+  top: 0px;
   left: 0;}
 
 #logo h1, #logo h2
@@ -156,17 +156,16 @@ ol li
 #logo img {
    height: 128px;
    width: 128px;
-   margin-Top:30px;
+   margin-Top:10px;
 }  
 
 
 @media screen and (max-width: 698px) {
-    #header
-    { height: 170px;
+    #header {
+        height: 120px;
     }
-
     #logo{
-        height: 130px;
+        height: 90px;
         vertical-align: center;
     }
     #logo_text h1 {
@@ -186,7 +185,7 @@ ol li
     #logo img {
         height: 64px;
         width: 64px;
-        margin-Top: 30px;
+        margin-Top: 10px;
      }   
 
     .btn-primary {
@@ -201,6 +200,19 @@ ol li
         height: 90%;
     } 
 }    
+
+
+@media screen and (max-height: 900px) {
+    #header
+    { 
+      position: relative;  
+    }
+
+    #footer
+    { 
+      position: relative;  
+    }
+}   
 
 #menubar
 { width: 877px;
