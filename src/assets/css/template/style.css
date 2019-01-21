@@ -161,6 +161,9 @@ ol li
 
 
 @media screen and (max-width: 698px) {
+    #header
+    { height: 170px;
+    }
 
     #logo{
         height: 130px;
@@ -185,6 +188,14 @@ ol li
         width: 64px;
         margin-Top: 30px;
      }   
+
+    .btn-primary {
+        font-size: 7px;
+    } 
+
+    .btn-glass {
+        padding: 7px 3.5px !important;
+    } 
 }    
 
 #menubar

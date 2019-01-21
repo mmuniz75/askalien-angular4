@@ -4,13 +4,6 @@
     margin-top : 240px;
 }
 
-@media screen and (max-width: 698px) {
-    .layout_layer {
-        margin-top : 270px;
-        font-size: 1rem;
-    }    
-}    
-
 .layout-main {
     position: relative;
     padding: 0;
@@ -33,8 +26,19 @@
 }
 
 @media screen and (max-width: 698px) {
+    .layout_layer {
+        margin-top : 170px;
+        font-size: 1rem;
+    } 
+
+    .spinner {
+        position: absolute;
+        right: 2% ;
+    }
+
     #search {
         font-size: 25px !important;
+        
     }    
 }    
 
