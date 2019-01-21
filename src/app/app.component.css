@@ -24,23 +24,7 @@
 #search {
     max-width: 800px;
 }
-
-@media screen and (max-width: 698px) {
-    .layout_layer {
-        margin-top : 170px;
-        font-size: 1rem;
-    } 
-
-    .spinner {
-        position: absolute;
-        right: 2% ;
-    }
-
-    #search {
-        font-size: 25px !important;
-        
-    }    
-}    
+ 
 
 .note {
     font-size: 0.775em;
@@ -52,6 +36,8 @@
     width: 50%;
     padding: 10px;
 }
+
+
 
 #questions {
     width: 90vw;
@@ -84,7 +70,8 @@
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     font-size: 30px;
-    width : 80vw;
+    width : 90vw;
+    position: relative;
 }
 
 #search:hover,
@@ -219,3 +206,30 @@
     from {bottom: 30%; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+
+
+@media screen and (max-width: 698px) {
+    .layout_layer {
+        margin-top : 170px;
+        font-size: 1rem;
+        align-content: center;
+    } 
+
+    .spinner {
+        position: absolute;
+        right: 2% ;
+    }
+
+    #search {
+        font-size: 25px !important;
+    }    
+
+    .note {
+        width: 100% ;
+        padding: 0;
+    }
+
+    #questions {
+       margin-left: 16px;
+    }
+}   

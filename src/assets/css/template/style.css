@@ -196,6 +196,10 @@ ol li
     .btn-glass {
         padding: 7px 3.5px !important;
     } 
+
+    .modal-content {
+        height: 90%;
+    } 
 }    
 
 #menubar
@@ -368,3 +372,4 @@ table tr td
 { background: #F0EFE2;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
