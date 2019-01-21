@@ -293,8 +293,8 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 #footer
 { width: 100%;
   font: normal 100% 'lucida sans unicode', arial, sans-serif;
-  height: 63px;
-  padding: 24px 0 5px 0;
+  height: 32px;
+  padding: 6px 0 2px 0;
   text-align: center; 
   background: #29425E url(footer.png) repeat-x;
   color: #FFF;
