@@ -10,6 +10,7 @@ html
 body
 { font: normal .80em 'trebuchet ms', arial, sans-serif;
   height: 100%;
+  overflow-x: hidden;
 }
 
 p
@@ -107,11 +108,16 @@ ol li
 #header
 { background: #025587;
   height: 240px;
-  margin: 0; 
+  margin: 0;
+  width: 100%;
+  position: fixed; 
+  z-index:100;
 }
+   
 
 .btn-bar {
     max-width: 800px;
+    font-size: 10px;
 }
 
 #logo
@@ -146,6 +152,40 @@ ol li
   padding: 4px 0 0 0;
   color: #DDD;
   margin: 0px 150px;}
+
+#logo img {
+   height: 128px;
+   width: 128px;
+   margin-Top:30px;
+}  
+
+
+@media screen and (max-width: 698px) {
+
+    #logo{
+        height: 130px;
+        vertical-align: center;
+    }
+    #logo_text h1 {
+        font-size: 30px;
+        margin : 0px 75px;
+        padding-top: 0px;
+    }    
+
+    #logo_text h2 {
+        font-size: 12px;
+        width: 80%;
+        margin : 0px 75px;
+        height: 100%;
+        
+    }    
+
+    #logo img {
+        height: 64px;
+        width: 64px;
+        margin-Top: 30px;
+     }   
+}    
 
 #menubar
 { width: 877px;
@@ -224,7 +264,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   line-height: 1.5em;}
 
 #footer
-{ width: 100vw;
+{ width: 100%;
   font: normal 100% 'lucida sans unicode', arial, sans-serif;
   height: 63px;
   padding: 24px 0 5px 0;
@@ -235,6 +275,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   letter-spacing: 0.1em;
   bottom:0;
   position: fixed;
+  z-index : 3;
 }
 
 #footer a

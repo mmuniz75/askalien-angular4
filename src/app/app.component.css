@@ -1,3 +1,16 @@
+.layout_layer {
+    position: absolute;
+    z-index : 2;
+    margin-top : 240px;
+}
+
+@media screen and (max-width: 698px) {
+    .layout_layer {
+        margin-top : 270px;
+        font-size: 1rem;
+    }    
+}    
+
 .layout-main {
     position: relative;
     padding: 0;
@@ -18,6 +31,12 @@
 #search {
     max-width: 800px;
 }
+
+@media screen and (max-width: 698px) {
+    #search {
+        font-size: 25px !important;
+    }    
+}    
 
 .note {
     font-size: 0.775em;
