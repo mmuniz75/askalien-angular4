@@ -1,5 +1,7 @@
 html
-{ height: 100%;}
+{ height: 100%;
+  width: 100%;
+}
 
 *
 { margin: 0;
@@ -19,6 +21,7 @@ main{
    padding: 150px;
    background: white;
    margin: 0;
+   width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 
@@ -89,9 +92,9 @@ ol li
 { margin: 0 0 11px 0;}
 
 #main {
-    width: 100%;
+    width: 100vw;
     height: 100%;
-    position:relative;
+    position: absolute;
     top:0;
     background: white;
 }
@@ -107,8 +110,12 @@ ol li
   margin: 0; 
 }
 
+.btn-bar {
+    max-width: 800px;
+}
+
 #logo
-{ width: 825px;
+{ width: 100vw;
   position: relative;
   height: 168px;
   background: #025587 url(logo.png) no-repeat;}
@@ -217,7 +224,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   line-height: 1.5em;}
 
 #footer
-{ width: 100%;
+{ width: 100vw;
   font: normal 100% 'lucida sans unicode', arial, sans-serif;
   height: 63px;
   padding: 24px 0 5px 0;
