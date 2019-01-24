@@ -2,6 +2,13 @@
     position: absolute;
     z-index : 2;
     margin-top : 200px;
+    
+}
+
+@media (min-width: 56rem) {
+    .layout_layer {
+        margin-left: calc( (100vw - 880px)/2 );
+    }
 }
 
 .layout-main {
@@ -209,9 +216,9 @@
 }
 
 
-@media screen and (max-width: 698px) {
+@media screen and (max-width: 720px) {
     .layout_layer {
-        margin-top : 1px;
+        margin-top : 12rem;
         font-size: 1rem;
         align-content: center;
     } 
@@ -231,7 +238,7 @@
     }
 
     #questions {
-       margin-left: 16px;
+       
     }
 }   
 

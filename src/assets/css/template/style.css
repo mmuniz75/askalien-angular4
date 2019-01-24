@@ -118,6 +118,13 @@ ol li
 .btn-bar {
     max-width: 800px;
     font-size: 10px;
+    
+}
+
+@media (min-width: 800px) {
+    .btn-bar {
+        margin-left: calc(100vw - 800px);
+    }
 }
 
 #logo
@@ -160,7 +167,7 @@ ol li
 }  
 
 
-@media screen and (max-width: 698px) {
+@media screen and (max-width: 720px) {
     #header {
         height: 120px;
     }
@@ -194,7 +201,11 @@ ol li
 
     .btn-glass {
         padding: 7px 3.5px !important;
-    } 
+    }
+
+    .btn-bar {
+        margin-left: 0;
+    }
 
     .modal-content {
         height: 90%;
