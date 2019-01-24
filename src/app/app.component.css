@@ -45,14 +45,18 @@
     position: absolute;
 }
 
-
-
 #questions {
     width: 90vw;
     margin-left: 32px;
     position: relative;
     max-width: 800px;
     margin-bottom: 64px;
+}
+
+@media (max-width: 668px)  and (orientation : portrait){
+    #questions {
+        margin-left: 16px;
+    }    
 }
 .questions-spinner{
     text-align: center;
@@ -237,9 +241,6 @@
         padding: 0;
     }
 
-    #questions {
-       
-    }
 }   
 
 @media screen and (max-height: 900px) {
