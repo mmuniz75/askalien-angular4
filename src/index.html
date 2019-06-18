@@ -49,16 +49,15 @@
             <div>
                 <nav class="btn-bar nav-light">
                     <a href="#" class="btn btn-glass btn-primary" data-toggle="modal" data-target="#syntaxDialog" >
-                        <i class="fa fa-fw fa-lg fa-binoculars"></i> Improve your Search
+                        <i class="fa fa-fw fa-lg fa-question"></i> Help
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=edu.muniz.universeguide.mobile" target="_blank" class="btn btn-glass btn-primary">
                         <i class="fa fa-fw fa-lg fa-android"></i> Android
                     </a>
-                    <a href="itms-services://?action=download-manifest&url=https://s3.amazonaws.com/askalien.men/assets/ios/askalien.plist" target="_blank" class="btn btn-glass btn-primary">
-                        <i class="fa fa-fw fa-lg fa-apple"></i> IOS
+                    <!--a href="itms-services://?action=download-manifest&url=https://s3.amazonaws.com/askalien.men/assets/ios/askalien.plist" target="_blank" class="btn btn-glass btn-primary"-->
+                    <a href="#" target="_blank" class="btn btn-glass btn-primary" data-toggle="modal" data-target="#iosInstalation">
+                        <i class="fa fa-fw fa-lg fa-apple"></i> IOS(Beta)
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=edu.muniz.universeguide.mobile" target="_blank" class="btn btn-glass btn-primary">
-
                   </a>
                     <a href="#" class="btn btn-glass btn-primary" onclick="document.getElementById('payPalForm').submit()">
                         <i class="fa fa-fw fa-lg fa-money"></i> Donate
@@ -120,6 +119,44 @@
                     Example:
                     <pre class="code">(chithok AND pleiades)</pre>
                     <pre class="code">OR (pleiades AND krulians) </pre>
+                    <br>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal fade" id="iosInstalation" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">IOS Installation instructions</h4>
+            </div>
+            <div class="modal-body">
+                    Install Apple's TestFlight application, tapping the button bellow.
+                    <br>
+                    <br>
+                      <a href="https://apps.apple.com/us/app/testflight/id899247664" target="_blank" class="btn btn-glass btn-primary">
+                        <i class="fa fa-fw fa-lg fa-apple"></i> Test Flight
+                     </a>
+                    <br>
+                    <br>
+                    <br>
+                    Install the AskAlien application, tapping the button bellow.
+                    <br>
+                    <br>
+                        <a href="https://testflight.apple.com/join/6bQabhT2" target="_blank" class="btn btn-glass btn-primary">
+                          <div class="divContainer">
+                            <img src="favicon.ico" width="18%" />
+                            <span>Install</span>
+                          </div>
+                       </a>
                     <br>
             </div>
             <div class="modal-footer">

@@ -3,7 +3,7 @@ li {
 }
 
 div.panel-heading {
-   font-size: x-large; 
+   font-size: x-large;
 }
 
 * {
@@ -240,3 +240,19 @@ body {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
+
+.divContainer
+{
+    vertical-align: middle;
+    text-align: left;
+
+}
+.divContainer > *
+{
+    vertical-align: middle;
+}
+
+.divContainer > span
+{
+  padding-left: 0.5rem;
+}
