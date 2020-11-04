@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  SERVER_URL : "localhost:8080/"
+  SERVER_URL : "https://nfb7982mwg.execute-api.us-east-1.amazonaws.com/v1-"
 };

@@ -1,3 +1,3 @@
 export interface IServer {
-    server: string
+    serverWeb: string
 }

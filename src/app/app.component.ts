@@ -95,7 +95,11 @@ export class AppComponent {
                 .subscribe(answer => {  question.answer = answer; 
                                         this.questionProcessing[posi] = false;
                                         question.isActive = true; 
-                                        this.divContent.toArray()[posi].nativeElement.innerHTML  = answer.content;
+                                        if(this.divContent &&  this.divContent.toArray()
+                                                           &&  this.divContent.toArray().length >= posi 
+                                                           && this.divContent.toArray()[posi]
+                                                           && this.divContent.toArray()[posi].nativeElement)
+                                            this.divContent.toArray()[posi].nativeElement.innerHTML  = answer.content;
                                     },
                            error => this.errorMessage = <any>error)
                 ;

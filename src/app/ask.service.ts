@@ -19,7 +19,7 @@ export class AskService {
       constructor(private _http: Http) { }
 
       ask(keyword: String): Observable<IQuestion[]> {
-            const askUrl = 'http://' + environment.SERVER_URL + '/ask?question=';
+            const askUrl = environment.SERVER_URL + '/ask?question=';
             let headers = new Headers({ 'Authorization': 'Basic ' + btoa('admin:456') });
             let options = new RequestOptions({ headers: headers, method: "get" });
 
@@ -31,7 +31,7 @@ export class AskService {
 
 
       getAnswer(id: Number, search: String): Observable<IAnswer> {
-            const anwerUrl = 'http://' + environment.SERVER_URL + '/answer/';
+            const anwerUrl = environment.SERVER_URL + '/answer';
             return this._http.get(anwerUrl + "/" + id + "?question=" + search)
                   .map((response: Response) => <IAnswer>response.json())
                   //.do(data => console.log('All: ' +  JSON.stringify(data)))
@@ -41,16 +41,19 @@ export class AskService {
 
       public configServer(): Observable<IServer> {
             return this._http.get(SERVER_CONF)
-                  .map((response: Response) => this.setServer(<IServer>response.json()))
+                  .map((response: Response) => {
+                        this.setServer(<IServer>response.json())
+                  })
+                        
                   .catch(this.handleError);
       }
 
       private setServer(server) {
-            environment.SERVER_URL = server.server;
+            environment.SERVER_URL = server.serverWeb;
       }
 
       sendFeedBack(questionId: Number, name: String, email: String, comments: String): Observable<any> {
-            const feedBackUrl = 'http://' + environment.SERVER_URL + '/feedback';
+            const feedBackUrl = environment.SERVER_URL + '/feedback';
             let headers = new Headers({ 'Content-Type': 'application/json' });
             let options = new RequestOptions({ headers: headers, method: "post" });
             let data = new Comment();
