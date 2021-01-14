@@ -54,7 +54,7 @@
                     <!-- Not works when add Polymer -->
                     <p *ngIf="question.answer" [innerHTML]='question.answer.content'></p>
                     <!-- <p #divContent></p-->
-                    <p *ngIf="question.answer">{{question.date}} - <i>from video {{question.number}}</i> </p>
+                    <p *ngIf="question.answer">{{question.date}} - <i>from video {{question.answer.number}}</i> </p>
                   </div>
                 </div>
                 <div class="iquestion_answer-footer">
