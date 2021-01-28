@@ -73,8 +73,8 @@
                         <i class="fa fa-fw fa-lg fa-android"></i> Android
                     </a>
                     <!--a href="itms-services://?action=download-manifest&url=https://s3.amazonaws.com/askalien.men/assets/ios/askalien.plist" target="_blank" class="btn btn-glass btn-primary"-->
-                    <a href="#" target="_blank" class="btn btn-glass btn-primary" data-toggle="modal" data-target="#iosInstalation">
-                        <i class="fa fa-fw fa-lg fa-apple"></i> IOS(Beta)
+                    <a href="#" target="_blank" class="btn btn-glass btn-primary" onclick="addHomeScreen(event)">
+                        <i class="fa fa-fw fa-lg fa-apple"></i> IOS
                     </a>
                   </a>
                     <a href="#" class="btn btn-glass btn-primary" onclick="document.getElementById('payPalForm').submit()">
@@ -149,6 +149,26 @@
 
       <div class="modal fade" id="iosInstalation" role="dialog">
         <div class="modal-dialog">
+          <div class="modal-content center">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Message</h4>
+            </div>
+            <div class="modal-body text-center">
+              <div class="alert alert-danger" role="alert">
+                <h4>Not possible to install now, try again later</h4>
+                <h5>* This option is just avaliable to Chrome</h5>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+
+      <div class="modal fade" id="iosInstalation-old" role="dialog">
+        <div class="modal-dialog">
 
           <!-- Modal content-->
           <div class="modal-content">
@@ -184,5 +204,27 @@
 
         </div>
       </div>
+      <script>
+
+        var deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', function(event) {
+          console.log('beforeinstallprompt fired');
+          event.preventDefault();
+          deferredPrompt = event;
+          return false;
+        });
+
+        function addHomeScreen(event){
+          event.preventDefault();
+          if(deferredPrompt){
+            deferredPrompt.prompt();
+          }else{
+            //alert('Not possible do install now, try late')
+            $('#iosInstalation').modal('show')
+          }
+            
+        }
+      </script>  
     </body>
 </html>
