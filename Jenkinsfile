@@ -1,4 +1,7 @@
 node {
+   stage('Checkout') { 
+       git(url: 'https://github.com/mmuniz75/askalien-angular4')
+   }
    stage('Install Modules') {
       //env.NODEJS_HOME = "${tool 'nodejs'}"
       //env.PATH="${env.NODEJS_HOME}/bin:node_modules/@angular/cli/bin:${env.PATH}"
