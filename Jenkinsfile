@@ -1,31 +1,27 @@
-environment {
-   AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-   AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-   AWS_DEFAULT_REGION = 'us-east-1'
+pipeline {
+    agent any
+
+    environment {
+      AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+      AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+      AWS_DEFAULT_REGION = 'us-east-1'
+   }
+
+    stages {
+        stage('echo vars') {
+            steps {
+                echo "${branch}"
+                echo "${env.AWS_DEFAULT_REGION}"
+                echo "${env.AWS_ACCESS_KEY_ID}"
+                echo "${env.AWS_AWS_SECRET_ACCESS_KEY}"
+                echo "${env.AWS_DEFAULT_REGION}"
+                echo "${AWS_ACCESS_KEY_ID}"
+                echo "${AWS_AWS_SECRET_ACCESS_KEY}"
+                echo "${AWS_DEFAULT_REGION}"
+            }
+        }
+    }
 }
-
-node {
-   stage('env.AWS_DEFAULT_REGION') { 
-      echo '${env.AWS_DEFAULT_REGION}'
-   }
-   
-   stage('env.AWS_ACCESS_KEY_ID') { 
-      echo '${env.AWS_ACCESS_KEY_ID}'
-   }
-
-   stage('AWS_DEFAULT_REGION') { 
-      echo '${AWS_DEFAULT_REGION}'
-   }
-   
-   stage('AWS_ACCESS_KEY_ID') { 
-      echo '${AWS_ACCESS_KEY_ID}'
-   }
-
-   stage('branch') { 
-      echo '${branch}'
-   }
-
-   
    /*
    stage('Checkout') { 
        git(url: 'https://github.com/mmuniz75/askalien-angular4',
