@@ -1,12 +1,20 @@
-node {
+pipeline {
    environment {
         AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         AWS_DEFAULT_REGION = 'us-east-1'
    }
+
+   stage('echo antes set') { 
+      sh 'echo $AWS_DEFAULT_REGION && echo $AWS_ACCESS_KEY_ID' 
+   }
    
+   stage('set envs') { 
+      sh 'export AWS_DEFAULT_REGION=us-east-1 && export AWS_ACCESS_KEY_ID=${credentials('AWS_ACCESS_KEY_ID')}' 
+   }
+
    stage('echo') { 
-      sh 'echo $AWS_DEFAULT_REGION && echo $AWS_ACCESS_KEY_ID && echo $AWS_DEFAULT_REGION' 
+      sh 'echo $AWS_DEFAULT_REGION && echo $AWS_ACCESS_KEY_ID' 
    }
 
    /*
