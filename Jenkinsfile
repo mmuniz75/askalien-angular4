@@ -21,7 +21,7 @@ pipeline {
             }
         }
     }
-}
+
    /*
    stage('Checkout') { 
        git(url: 'https://github.com/mmuniz75/askalien-angular4',
