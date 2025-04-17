@@ -256,3 +256,15 @@ body {
 {
   padding-left: 0.5rem;
 }
+
+.highlight {
+  font-size: 2rem; /* Larger font size for emphasis */
+  font-weight: bold;
+
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc; /* Glow effect */
+  animation: pulse 2s infinite; /* Pulsating glow animation */
+}
+
+.new-icon {
+  color: #ffcc00; /* Gold/yellow icon */
+}
