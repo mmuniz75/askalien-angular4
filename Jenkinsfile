@@ -30,7 +30,7 @@ pipeline {
       */
       stage('Compile Typescript') {
          steps {
-            sh 'ng build --prod --build-optimizer'
+            sh 'npx ng build --prod --build-optimizer'
          }
       }
       stage('Sync with AWS') {
