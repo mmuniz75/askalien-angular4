@@ -268,3 +268,22 @@ body {
 .new-icon {
   color: #ffcc00; /* Gold/yellow icon */
 }
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .highlight {
+    font-size: 1.0rem;
+  }
+}
